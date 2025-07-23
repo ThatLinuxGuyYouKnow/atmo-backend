@@ -6,10 +6,11 @@ from routes.forecast import return_forecast
 app = Flask(__name__)
 
 @app.route('/forecast',methods=['GET', 'POST'])
-def get_forecast(location_name):
+def get_forecast():
     if request.method == 'POST':
-
-     response = return_forecast(longlat=location_name)
+     data = request.get_json()
+     location = data.get("location")
+     response = return_forecast(longlat=location)
      print(response)
      return jsonify({'message': 'response'})
 
