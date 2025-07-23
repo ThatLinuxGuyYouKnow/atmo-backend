@@ -5,8 +5,8 @@ from routes.forecast import return_forecast
 app = Flask(__name__)
 
 @app.route('/forecast')
-def get_forecast():
-    response = return_forecast()
+def get_forecast(location_name):
+    response = return_forecast(longlat=location_name)
     print(response)
     return jsonify({'message': 'response'})
 
