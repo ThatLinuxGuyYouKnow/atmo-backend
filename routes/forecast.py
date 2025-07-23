@@ -11,7 +11,7 @@ def return_forecast(longlat: str):
     response = requests.get(url)
     response.raise_for_status()
     data = response.json()
-
+    print(data)
     # Step 1: Slice first 24 hourly entries (i.e., today's data)
     full_hourly = data.get("timelines", {}).get("hourly", [])
     today_hourly = full_hourly[:24]
